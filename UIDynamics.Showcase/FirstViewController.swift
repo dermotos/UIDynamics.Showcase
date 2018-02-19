@@ -19,9 +19,7 @@ class FirstViewController: UIViewController {
     var gravity: UIGravityBehavior!
     var collision :UICollisionBehavior!
     var elasticity :UIDynamicItemBehavior!
-    
-    
-    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,45 +43,47 @@ class FirstViewController: UIViewController {
         elasticity = UIDynamicItemBehavior()
         elasticity.elasticity = elasticConstant
         
+        let anchor = UIDynamicItemBehavior(items: [view])
+        anchor.isAnchored = true
+        animator.addBehavior(anchor)
+        
         animator.addBehavior(collision)
         animator.addBehavior(gravity)
         animator.addBehavior(elasticity)
     }
     
-    private func addBox(atPosition position:CGPoint, withColor color:UIColor) -> UIView {
-        let boxSize = CGSize(width: 150, height: 150)
-        let frame = CGRect(origin: position, size: boxSize)
+    private func addView(atPosition position:CGPoint, withSize size:CGSize, andColor color:UIColor) -> UIView {
+        let frame = CGRect(origin: position, size: size)
         let aBox = UIView(frame: frame)
         aBox.backgroundColor = color
         view.addSubview(aBox)
         return aBox
     }
     
-    private func addBasePhysics(to view:UIView) {
-        gravity.addItem(view)
-        collision.addItem(view)
-    }
-    
-    private func addElasticity(to view:UIView) {
-        elasticity.addItem(view)
-    }
-    
-    
-    
-    private func resetScene() {
-        
-        
-    }
+  
 
     @IBAction func didTapStart(_ sender: UIButton) {
-        let boxOnePosition = CGPoint(x: 10, y: 10)
-        let boxOne = addBox(atPosition: boxOnePosition, withColor: .red)
-        addBasePhysics(to: boxOne)
-        addElasticity(to: boxOne)
-        //TODO: Add first box, then second box along with a barrier, then gravity, then push them towards each other.
-        //Second view controller is orbit
-        //Third is real world example, perhaps a table view with a UIDynamics transition animator
-        //fourth if I've time is a name picker
+        let boxSize = CGSize(width: 50, height: 50)
+        let boxPosition = CGPoint(x: view.bounds.size.width / 2 - boxSize.width / 2, y: 10)
+        
+        let theBox = addView(atPosition: boxPosition, withSize: boxSize, andColor: .red)
+        gravity.addItem(theBox)
+        collision.addItem(theBox)
+        
+        elasticity.addItem(view)
+        
+        let floorSize = CGSize(width: view.bounds.size.width, height: 10)
+        let floorPosition = CGPoint(x: 0, y: view.bounds.size.height - 80)
+        let theFloor = addView(atPosition: floorPosition, withSize: floorSize, andColor: .blue)
+        
+        collision.addItem(theFloor)
+        
+        let attachment = UIAttachmentBehavior.pinAttachment(with: theFloor, attachedTo: view, attachmentAnchor: theFloor.center)
+        // UIAttachmentBehavior(item: theFloor, attachedToAnchor: theFloor.frame.origin)
+        animator.addBehavior(attachment)
+        
+        elasticity.addItem(theBox)
+        
     }
     
     @IBAction func didTapReset(_ sender: UIButton) {
