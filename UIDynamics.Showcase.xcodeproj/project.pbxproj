@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07B8D739203EC33B00242E17 /* OrreryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B8D738203EC33B00242E17 /* OrreryViewController.swift */; };
+		07B8D741203EC82B00242E17 /* smoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07B8D740203EC82B00242E17 /* smoke.sks */; };
 		07BAF33A203690220071E1D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BAF339203690220071E1D1 /* AppDelegate.swift */; };
 		07BAF33C203690220071E1D1 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BAF33B203690220071E1D1 /* FirstViewController.swift */; };
-		07BAF33E203690220071E1D1 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BAF33D203690220071E1D1 /* SecondViewController.swift */; };
 		07BAF341203690220071E1D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07BAF33F203690220071E1D1 /* Main.storyboard */; };
 		07BAF343203690220071E1D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07BAF342203690220071E1D1 /* Assets.xcassets */; };
 		07BAF346203690220071E1D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07BAF344203690220071E1D1 /* LaunchScreen.storyboard */; };
@@ -17,10 +18,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07B8D738203EC33B00242E17 /* OrreryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrreryViewController.swift; sourceTree = "<group>"; };
+		07B8D740203EC82B00242E17 /* smoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = smoke.sks; sourceTree = "<group>"; };
 		07BAF336203690220071E1D1 /* UIDynamics.Showcase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIDynamics.Showcase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07BAF339203690220071E1D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07BAF33B203690220071E1D1 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		07BAF33D203690220071E1D1 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		07BAF340203690220071E1D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		07BAF342203690220071E1D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07BAF345203690220071E1D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -65,11 +67,12 @@
 			children = (
 				07BAF339203690220071E1D1 /* AppDelegate.swift */,
 				07BAF33B203690220071E1D1 /* FirstViewController.swift */,
-				07BAF33D203690220071E1D1 /* SecondViewController.swift */,
+				07B8D738203EC33B00242E17 /* OrreryViewController.swift */,
 				07BAF33F203690220071E1D1 /* Main.storyboard */,
 				07BAF342203690220071E1D1 /* Assets.xcassets */,
 				07BAF344203690220071E1D1 /* LaunchScreen.storyboard */,
 				07BAF347203690220071E1D1 /* Info.plist */,
+				07B8D740203EC82B00242E17 /* smoke.sks */,
 			);
 			path = UIDynamics.Showcase;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 				07BAF346203690220071E1D1 /* LaunchScreen.storyboard in Resources */,
 				07BAF343203690220071E1D1 /* Assets.xcassets in Resources */,
 				07BAF341203690220071E1D1 /* Main.storyboard in Resources */,
+				07B8D741203EC82B00242E17 /* smoke.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,7 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07BAF33E203690220071E1D1 /* SecondViewController.swift in Sources */,
+				07B8D739203EC33B00242E17 /* OrreryViewController.swift in Sources */,
 				07BAF33A203690220071E1D1 /* AppDelegate.swift in Sources */,
 				07BAF33C203690220071E1D1 /* FirstViewController.swift in Sources */,
 			);
