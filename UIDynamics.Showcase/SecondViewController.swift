@@ -11,19 +11,24 @@ import UIKit
 class SecondViewController: UIViewController {
 
     private var animator :UIDynamicAnimator!
+    
+    private var collisionBehavior:UICollisionBehavior!
+    
     private var attachmentBehavior: UIAttachmentBehavior!
     private var pushBehavior: UIPushBehavior!
     private var itemBehavior: UIDynamicItemBehavior!
+    
+    private var radialGravity :UIFieldBehavior!
     
     private var panRecognizer :UIPanGestureRecognizer!
     
     private var redSquare:  UIView!
     
-    private var touchPoint: UIView!
-    private var dragPoint:  UIView!
-    
     private var originalBounds = CGRect.zero
     private var originalCenter = CGPoint.zero
+    
+    private let limitingFriction :CGFloat = 1000
+    private let velocityPadding :CGFloat = 35
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,10 +43,27 @@ class SecondViewController: UIViewController {
         view.addSubview(redSquare)
         redSquare.center = view.center
         
-        
         animator = UIDynamicAnimator(referenceView: view)
+        
+        let anchor = UIDynamicItemBehavior(items: [view])
+        anchor.isAnchored = true
+        animator.addBehavior(anchor)
+        
+        radialGravity = UIFieldBehavior.radialGravityField(position: view.center)
+        radialGravity.addItem(redSquare)
+        
+    
+        
         originalBounds = redSquare.bounds
         originalCenter = redSquare.center
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        collisionBehavior = UICollisionBehavior(items: [redSquare])
+        collisionBehavior.translatesReferenceBoundsIntoBoundary = true
+        animator.addBehavior(collisionBehavior)
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,36 +74,66 @@ class SecondViewController: UIViewController {
     
     @objc private func handleDragGesture(sender: UIPanGestureRecognizer) {
         let location = sender.location(in: view)
-        let boxLocation = sender.location(in: redSquare)
+        let squareLocation = sender.location(in: redSquare)
         
         switch sender.state {
         case .began:
-            print("Your touch start position is \(location)")
-            print("Start location in image is \(boxLocation)")
             
-            // 1
-            animator.removeAllBehaviors()
-            
-            // 2
-            let centerOffset = UIOffset(horizontal: boxLocation.x - imageView.bounds.midX,
-                                        vertical: boxLocation.y - imageView.bounds.midY)
+            removeDragBehaviors()
+            removeVelocityBehaviors()
+
+            let centerOffset = UIOffset(horizontal: squareLocation.x - redSquare.bounds.midX,
+                                        vertical: squareLocation.y - redSquare.bounds.midY)
             attachmentBehavior = UIAttachmentBehavior(item: redSquare,
                                                       offsetFromCenter: centerOffset, attachedToAnchor: location)
             
-            // 3
-            redSquare.center = attachmentBehavior.anchorPoint
-            blueSquare.center = location
-            
-            // 4
             animator.addBehavior(attachmentBehavior)
             
         case .ended:
-            print("Your touch end position is \(location)")
-            print("End location in image is \(boxLocation)")
+            
+            removeDragBehaviors()
+            
+//            let velocity = sender.velocity(in: view)
+//            let magnitude = sqrt((velocity.x * velocity.x) + (velocity.y * velocity.y))
+//            impartVelocity(velocity, withMagnitude: magnitude, onView: redSquare)
             
         default:
-            break
+            attachmentBehavior!.anchorPoint = sender.location(in: view)
         }
     }
+    
+    private func removeVelocityBehaviors() {
+        if pushBehavior != nil && animator.behaviors.contains(pushBehavior) {
+            animator.removeBehavior(pushBehavior)
+        }
+        
+        if itemBehavior != nil && animator.behaviors.contains(itemBehavior) {
+            animator.removeBehavior(itemBehavior)
+        }
+    }
+    
+    private func removeDragBehaviors() {
+        if attachmentBehavior != nil && animator.behaviors.contains(attachmentBehavior) {
+            animator.removeBehavior(attachmentBehavior)
+        }
+    }
+    
+//    private func impartVelocity(_ velocity:CGPoint, withMagnitude magnitude:CGFloat, onView item:UIDynamicItem) {
+//        if magnitude > limitingFriction {
+//            let pushBehaviour = UIPushBehavior(items: [item], mode: .instantaneous)
+//            pushBehaviour.pushDirection = CGVector(dx: velocity.x / 10, dy: velocity.y / 10)
+//            pushBehaviour.magnitude = 100 /// velocityPadding
+//            self.pushBehavior = pushBehaviour
+//
+//            animator.addBehavior(pushBehaviour)
+//
+//            let angle = Int(arc4random_uniform(20)) - 10
+//            itemBehavior = UIDynamicItemBehavior(items: [item])
+//            itemBehavior!.friction = 0.2
+//            itemBehavior!.allowsRotation = true
+//            itemBehavior!.addAngularVelocity(CGFloat(angle), for: item)
+//            //animator.addBehavior(itemBehavior!)
+//        }
+//    }
 }
 
