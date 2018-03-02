@@ -18,8 +18,6 @@ class SecondViewController: UIViewController {
     private var pushBehavior: UIPushBehavior!
     private var itemBehavior: UIDynamicItemBehavior!
     
-    private var radialGravity :UIFieldBehavior!
-    
     private var panRecognizer :UIPanGestureRecognizer!
     
     private var redSquare:  UIView!
@@ -48,12 +46,7 @@ class SecondViewController: UIViewController {
         let anchor = UIDynamicItemBehavior(items: [view])
         anchor.isAnchored = true
         animator.addBehavior(anchor)
-        
-        radialGravity = UIFieldBehavior.radialGravityField(position: view.center)
-        radialGravity.addItem(redSquare)
-        
-    
-        
+
         originalBounds = redSquare.bounds
         originalCenter = redSquare.center
     }

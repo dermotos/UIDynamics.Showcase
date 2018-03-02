@@ -29,7 +29,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vur-iq-hnc">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                                    <state key="normal" title="Start"/>
+                                                    <state key="normal" title="Add a box"/>
                                                     <connections>
                                                         <action selector="didTapStart:" destination="9pv-A4-QxB" eventType="touchUpInside" id="si7-jf-amv"/>
                                                     </connections>
@@ -93,6 +93,22 @@
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="u1E-iW-7J3">
+            <objects>
+                <viewController id="CGK-eU-LLv" customClass="ThirdViewController" customModule="UIDynamics_Showcase" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eDg-Kp-qf3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="EM1-jJ-hm4"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="Qhc-Wy-KJq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uw2-p9-JS7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="765" y="1076"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -105,6 +121,7 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="CGK-eU-LLv" kind="relationship" relationship="viewControllers" id="iJ0-qg-ayO"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>

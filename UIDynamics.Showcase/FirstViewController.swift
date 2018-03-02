@@ -19,6 +19,8 @@ class FirstViewController: UIViewController {
     var gravity: UIGravityBehavior!
     var collision :UICollisionBehavior!
     var elasticity :UIDynamicItemBehavior!
+    
+    var spring :UISnapBehavior!
 
 
     override func viewDidLoad() {
@@ -46,6 +48,8 @@ class FirstViewController: UIViewController {
         let anchor = UIDynamicItemBehavior(items: [view])
         anchor.isAnchored = true
         animator.addBehavior(anchor)
+        
+        
         
         animator.addBehavior(collision)
         animator.addBehavior(gravity)
