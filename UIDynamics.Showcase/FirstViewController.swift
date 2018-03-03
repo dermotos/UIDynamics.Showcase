@@ -13,15 +13,13 @@ class FirstViewController: UIViewController {
     var animator :UIDynamicAnimator!
     
     let gravitationalConstant = 0.4
-    let elasticConstant :CGFloat = 0.9
+    let elasticConstant :CGFloat = 0.7
     
     @IBOutlet weak var controlContainer: UIVisualEffectView!
     
-    var gravity: UIGravityBehavior!
-    var collision :UICollisionBehavior!
-    var elasticity :UIDynamicItemBehavior!
-    
-    var spring :UISnapBehavior!
+    var gravity: UIGravityBehavior?
+    var collision :UICollisionBehavior?
+    var boxProperties :UIDynamicItemBehavior?
 
 
     override func viewDidLoad() {
@@ -47,7 +45,7 @@ class FirstViewController: UIViewController {
         let floorPosition = CGPoint(x: 0, y: view.bounds.size.height - 100)
         let theFloor = addView(atPosition: floorPosition, withSize: floorSize, andColor: .blue)
         
-        collision.addItem(theFloor)
+        collision?.addItem(theFloor)
         
         let floorAttachment =
             UIAttachmentBehavior.pinAttachment(with: theFloor,
@@ -58,23 +56,27 @@ class FirstViewController: UIViewController {
     
     private func setupEnvironment() {
         animator = UIDynamicAnimator(referenceView: view)
-        
-        collision = UICollisionBehavior()
-        collision.translatesReferenceBoundsIntoBoundary = true
-        
-        gravity = UIGravityBehavior()
-        gravity.gravityDirection = CGVector(dx: 0, dy: gravitationalConstant)
-        
-        elasticity = UIDynamicItemBehavior()
-        elasticity.elasticity = elasticConstant
-        
         let anchor = UIDynamicItemBehavior(items: [view])
         anchor.isAnchored = true
         animator.addBehavior(anchor)
-
-        animator.addBehavior(collision)
-        animator.addBehavior(gravity)
-        animator.addBehavior(elasticity)
+        
+        
+        // 1 - Gravity
+        gravity = UIGravityBehavior()
+        gravity!.gravityDirection = CGVector(dx: 0, dy: gravitationalConstant)
+        animator.addBehavior(gravity!)
+        
+        // 2 - Collisions
+        collision = UICollisionBehavior()
+        collision!.translatesReferenceBoundsIntoBoundary = true
+        animator.addBehavior(collision!)
+        
+        
+        // 3. Box properties
+        boxProperties = UIDynamicItemBehavior()
+        boxProperties!.elasticity = elasticConstant
+        boxProperties!.angularResistance = 1.5
+        animator.addBehavior(boxProperties!)
     }
     
     private func addView(atPosition position:CGPoint, withSize size:CGSize, andColor color:UIColor) -> UIView {
@@ -95,9 +97,9 @@ class FirstViewController: UIViewController {
         let boxPosition = CGPoint(x: view.bounds.size.width / 2 - boxSize.width / 2, y: 10)
         
         let theBox = addView(atPosition: boxPosition, withSize: boxSize, andColor: .red)
-        gravity.addItem(theBox)
-        collision.addItem(theBox)
-        elasticity.addItem(theBox)
+        gravity?.addItem(theBox)
+        collision?.addItem(theBox)
+        boxProperties?.addItem(theBox)
     }
     
     @IBAction func didTapReset(_ sender: UIButton) {
