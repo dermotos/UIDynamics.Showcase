@@ -11,9 +11,9 @@ import UIKit
 
 class FourthViewController : UITableViewController, BounceSwitchDelegate {
     
-    
-    
     private let ordinalFormatter :NumberFormatter
+    
+
     
     required init?(coder aDecoder: NSCoder) {
         ordinalFormatter = NumberFormatter()
@@ -39,9 +39,8 @@ class FourthViewController : UITableViewController, BounceSwitchDelegate {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 15
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
