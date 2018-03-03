@@ -9,7 +9,9 @@
 import Foundation
 import UIKit
 
-class FourthViewController : UITableViewController {
+class FourthViewController : UITableViewController, BounceSwitchDelegate {
+    
+    
     
     private let ordinalFormatter :NumberFormatter
     
@@ -23,6 +25,10 @@ class FourthViewController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
+    }
+    
+    func valueDidChange(of sender: BounceSwitch, to newValue: Bool) {
+        print("A bounce switch change was reported to the view controller")
     }
     
     
@@ -42,6 +48,12 @@ class FourthViewController : UITableViewController {
         
         let ordinal = ordinalFormatter.string(from: NSNumber(integerLiteral: indexPath.row))!
         cell.textLabel?.text = "\(ordinal) row"
+        
+        let switchFrame = CGRect(x: 0, y: 0, width: 80, height: 30)
+        let toggleSwitch = BounceSwitch(frame: switchFrame)
+        toggleSwitch.tag = indexPath.row
+        toggleSwitch.delegate = self
+        cell.accessoryView = toggleSwitch
         
         return cell
     }

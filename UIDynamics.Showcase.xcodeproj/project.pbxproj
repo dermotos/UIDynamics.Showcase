@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		074C9B8E204A4DBF00CC7095 /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074C9B8D204A4DBF00CC7095 /* FourthViewController.swift */; };
+		074C9B91204A533900CC7095 /* BounceSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074C9B90204A533900CC7095 /* BounceSwitch.swift */; };
 		078C7CCE204673A90029F6C8 /* StickyCornersBehaviour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078C7CCD204673A90029F6C8 /* StickyCornersBehaviour.swift */; };
 		078C7CD02048FCB80029F6C8 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078C7CCF2048FCB80029F6C8 /* ThirdViewController.swift */; };
 		07B8D739203EC33B00242E17 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B8D738203EC33B00242E17 /* SecondViewController.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		074C9B8D204A4DBF00CC7095 /* FourthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
+		074C9B90204A533900CC7095 /* BounceSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BounceSwitch.swift; sourceTree = "<group>"; };
 		078C7CCD204673A90029F6C8 /* StickyCornersBehaviour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyCornersBehaviour.swift; sourceTree = "<group>"; };
 		078C7CCF2048FCB80029F6C8 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		07B8D738203EC33B00242E17 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				07BAF347203690220071E1D1 /* Info.plist */,
 				078C7CCD204673A90029F6C8 /* StickyCornersBehaviour.swift */,
 				074C9B8D204A4DBF00CC7095 /* FourthViewController.swift */,
+				074C9B90204A533900CC7095 /* BounceSwitch.swift */,
 			);
 			path = UIDynamics.Showcase;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				07BAF33A203690220071E1D1 /* AppDelegate.swift in Sources */,
 				078C7CD02048FCB80029F6C8 /* ThirdViewController.swift in Sources */,
 				07BAF33C203690220071E1D1 /* FirstViewController.swift in Sources */,
+				074C9B91204A533900CC7095 /* BounceSwitch.swift in Sources */,
 				078C7CCE204673A90029F6C8 /* StickyCornersBehaviour.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
