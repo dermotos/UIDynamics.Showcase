@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--First-->
+        <!--Basics-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="UIDynamics_Showcase" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,14 +24,21 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="iND-x3-0bt">
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="iND-x3-0bt">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vur-iq-hnc">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="186" height="44"/>
                                                     <state key="normal" title="Add a box"/>
                                                     <connections>
-                                                        <action selector="didTapStart:" destination="9pv-A4-QxB" eventType="touchUpInside" id="si7-jf-amv"/>
+                                                        <action selector="didTapAddBox:" destination="9pv-A4-QxB" eventType="touchUpInside" id="JlY-Ob-0va"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PBm-q6-XOj">
+                                                    <rect key="frame" x="189" y="0.0" width="186" height="44"/>
+                                                    <state key="normal" title="Reset"/>
+                                                    <connections>
+                                                        <action selector="didTapReset:" destination="9pv-A4-QxB" eventType="touchUpInside" id="qCw-mZ-PFw"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -58,13 +65,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Basics" image="second" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="controlContainer" destination="q0q-ki-s3G" id="fAK-HQ-ZIj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
         </scene>
-        <!--Second-->
+        <!--Interaction-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="UIDynamics_Showcase" customModuleProvider="target" sceneMemberID="viewController">
@@ -87,13 +97,42 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Interaction" image="second" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
-        <!--Item-->
+        <!--Fourth View Controller-->
+        <scene sceneID="5yS-e5-0fm">
+            <objects>
+                <tableViewController id="ruD-Iq-0ax" customClass="FourthViewController" customModule="UIDynamics_Showcase" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9L8-55-e3o">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="M1o-xn-DEy">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="M1o-xn-DEy" id="agz-9G-7cr">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ruD-Iq-0ax" id="lz7-4F-2cr"/>
+                            <outlet property="delegate" destination="ruD-Iq-0ax" id="do7-eY-CrG"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="6A6-FV-f5R"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B8K-7g-yHQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2609" y="202"/>
+        </scene>
+        <!--Sticky Corners-->
         <scene sceneID="u1E-iW-7J3">
             <objects>
                 <viewController id="CGK-eU-LLv" customClass="ThirdViewController" customModule="UIDynamics_Showcase" customModuleProvider="target" sceneMemberID="viewController">
@@ -103,11 +142,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="EM1-jJ-hm4"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Qhc-Wy-KJq"/>
+                    <tabBarItem key="tabBarItem" title="Sticky Corners" image="second" id="Qhc-Wy-KJq"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uw2-p9-JS7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="765" y="1076"/>
+            <point key="canvasLocation" x="-1" y="1082"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -122,15 +161,34 @@
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="CGK-eU-LLv" kind="relationship" relationship="viewControllers" id="iJ0-qg-ayO"/>
+                        <segue destination="nss-Se-dhr" kind="relationship" relationship="viewControllers" id="NTj-WZ-um9"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
+        <!--Controls-->
+        <scene sceneID="mmp-fa-2iw">
+            <objects>
+                <navigationController title="Controls" automaticallyAdjustsScrollViewInsets="NO" id="nss-Se-dhr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Controls" image="second" id="LZc-0V-W4q"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Xgu-Um-m2n">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ruD-Iq-0ax" kind="relationship" relationship="rootViewController" id="i48-Aa-1to"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uJq-Py-9ym" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1780.8" y="202.39880059970017"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
 </document>
