@@ -148,6 +148,23 @@
             </objects>
             <point key="canvasLocation" x="-1" y="1082"/>
         </scene>
+        <!--Zero-->
+        <scene sceneID="dFH-sw-bbq">
+            <objects>
+                <viewController id="TcE-UA-All" customClass="ZerothViewController" customModule="UIDynamics_Showcase" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="brx-35-aGb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="l7i-6W-39R"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <tabBarItem key="tabBarItem" title="Zero" image="first" id="ZL2-sc-FWu"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ok2-pj-a1z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1576" y="1255"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -158,6 +175,7 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
+                        <segue destination="TcE-UA-All" kind="relationship" relationship="viewControllers" id="9c2-Cz-uBu"/>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="CGK-eU-LLv" kind="relationship" relationship="viewControllers" id="iJ0-qg-ayO"/>
@@ -189,6 +207,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
 </document>
