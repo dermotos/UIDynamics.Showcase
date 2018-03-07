@@ -58,31 +58,37 @@ class ZerothViewController : UIViewController {
         let targetView = animatedView!
         let offset = animationYOffset!
         
-        // First attempt:
-        UIView.animate(withDuration: 0.3) {
-            targetView.frame = finalFrame
+        let attempt = 2
+        
+        switch attempt {
+        case 1:
+            // First attempt:
+            UIView.animate(withDuration: 0.3) {
+                targetView.frame = finalFrame
+            }
+        case 2:
+            // Second attempt:
+            UIView.animate(withDuration: 0.9, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+                targetView.frame = finalFrame
+            }, completion: nil)
+            
+        case 3:
+            // Third attempt:
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
+                targetView.frame = finalFrame
+            }) { (finished) in
+                
+                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+                    targetView.frame = finalFrame.offsetBy(dx: 0, dy: -offset / 3)
+                }, completion: { (finished) in
+                    
+                    UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
+                        targetView.frame = finalFrame
+                    }, completion: nil)
+                })
+            }
+        default: break
         }
-    
-        // Second attempt:
-//        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-//            targetView.frame = finalFrame
-//        }, completion: nil)
-        
-        // Third attempt:
-//        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
-//            targetView.frame = finalFrame
-//        }) { (finished) in
-//
-//            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-//                targetView.frame = finalFrame.offsetBy(dx: 0, dy: -offset / 3)
-//            }, completion: { (finished) in
-//
-//                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
-//                    targetView.frame = finalFrame
-//                }, completion: nil)
-//            })
-//        }
-        
     }
     
     private func resetScene() {
