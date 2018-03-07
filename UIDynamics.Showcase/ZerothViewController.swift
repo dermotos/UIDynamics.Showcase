@@ -13,7 +13,7 @@ import UIKit
 class ZerothViewController : UIViewController {
     
     let tapGesture :UITapGestureRecognizer
-    let doubleTapGesture :UITapGestureRecognizer
+    let twoFingerTapGesture :UITapGestureRecognizer
     
     var animatedView :UIView!
     var startFrame :CGRect!
@@ -21,7 +21,7 @@ class ZerothViewController : UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         tapGesture = UITapGestureRecognizer()
-        doubleTapGesture = UITapGestureRecognizer()
+        twoFingerTapGesture = UITapGestureRecognizer()
         super.init(coder: aDecoder)
     }
     
@@ -32,7 +32,7 @@ class ZerothViewController : UIViewController {
         
         let sideLength :CGFloat = 100
         animationYOffset = 200
-        let endPositionY  = view.bounds.size.height - sideLength
+        let endPositionY  = view.bounds.size.height - (sideLength + tabBarController!.tabBar.bounds.size.height )
         let startPositionY :CGFloat = endPositionY - animationYOffset
         let positionFromLeftSize :CGFloat = (view.bounds.size.width / 2) - (sideLength / 2)
         
@@ -40,12 +40,12 @@ class ZerothViewController : UIViewController {
         animatedView = UIView(frame: startFrame)
         animatedView.backgroundColor = .red
         
-        tapGesture.numberOfTapsRequired = 1
+        tapGesture.numberOfTouchesRequired = 1
         tapGesture.addTarget(self, action: #selector(didTap))
-        doubleTapGesture.numberOfTapsRequired = 2
-        doubleTapGesture.addTarget(self, action: #selector(didTap))
+        twoFingerTapGesture.numberOfTouchesRequired = 2
+        twoFingerTapGesture.addTarget(self, action: #selector(didTap))
         
-        [doubleTapGesture, tapGesture].forEach { view.addGestureRecognizer($0) }
+        [tapGesture, twoFingerTapGesture].forEach { view.addGestureRecognizer($0) }
         
         view.addSubview(animatedView)
         
@@ -58,7 +58,7 @@ class ZerothViewController : UIViewController {
         let targetView = animatedView!
         let offset = animationYOffset!
         
-        let attempt = 2
+        let attempt = 1
         
         switch attempt {
         case 1:
@@ -99,7 +99,7 @@ class ZerothViewController : UIViewController {
         if sender == tapGesture {
             doAnimation()
         }
-        else if sender == doubleTapGesture {
+        else if sender == twoFingerTapGesture {
             resetScene()
         }
     }
