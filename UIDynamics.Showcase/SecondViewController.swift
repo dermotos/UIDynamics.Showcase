@@ -83,6 +83,7 @@ class SecondViewController: UIViewController {
             
             itemBehavior = UIDynamicItemBehavior(items: [redSquare])
             itemBehavior.allowsRotation = false
+
             animator.addBehavior(itemBehavior)
             
         case .ended:

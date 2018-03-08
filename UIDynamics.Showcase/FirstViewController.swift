@@ -58,21 +58,17 @@ class FirstViewController: UIViewController {
         let anchor = UIDynamicItemBehavior(items: [view])
         anchor.isAnchored = true
         animator.addBehavior(anchor)
-        
-        
-            
+ 
         // 1 - Gravity
         gravity = UIGravityBehavior()
         gravity!.gravityDirection = CGVector(dx: 0, dy: gravitationalConstant)
         animator.addBehavior(gravity!)
-        
         
         // 2 - Collisions
 //        collision = UICollisionBehavior()
 //        collision!.translatesReferenceBoundsIntoBoundary = true
 //        animator.addBehavior(collision!)
         
-
         // 3. Box properties
 //        boxProperties = UIDynamicItemBehavior()
 //        boxProperties!.elasticity = 0.5
