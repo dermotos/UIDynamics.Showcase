@@ -15,7 +15,6 @@ class SecondViewController: UIViewController {
     private var collisionBehavior:UICollisionBehavior!
     
     private var attachmentBehavior: UIAttachmentBehavior!
-    private var pushBehavior: UIPushBehavior!
     private var itemBehavior: UIDynamicItemBehavior!
     
     private var panRecognizer :UIPanGestureRecognizer!
@@ -73,33 +72,29 @@ class SecondViewController: UIViewController {
         case .began:
             
             removeDragBehaviors()
-            removeVelocityBehaviors()
+            removeItemBehaviors()
 
             let centerOffset = UIOffset(horizontal: squareLocation.x - redSquare.bounds.midX,
                                         vertical: squareLocation.y - redSquare.bounds.midY)
             attachmentBehavior = UIAttachmentBehavior(item: redSquare,
                                                       offsetFromCenter: centerOffset, attachedToAnchor: location)
-            
+
             animator.addBehavior(attachmentBehavior)
+            
+            itemBehavior = UIDynamicItemBehavior(items: [redSquare])
+            itemBehavior.allowsRotation = false
+            animator.addBehavior(itemBehavior)
             
         case .ended:
             
             removeDragBehaviors()
-            
-//            let velocity = sender.velocity(in: view)
-//            let magnitude = sqrt((velocity.x * velocity.x) + (velocity.y * velocity.y))
-//            impartVelocity(velocity, withMagnitude: magnitude, onView: redSquare)
             
         default:
             attachmentBehavior!.anchorPoint = sender.location(in: view)
         }
     }
     
-    private func removeVelocityBehaviors() {
-        if pushBehavior != nil && animator.behaviors.contains(pushBehavior) {
-            animator.removeBehavior(pushBehavior)
-        }
-        
+    private func removeItemBehaviors() {
         if itemBehavior != nil && animator.behaviors.contains(itemBehavior) {
             animator.removeBehavior(itemBehavior)
         }
@@ -111,22 +106,5 @@ class SecondViewController: UIViewController {
         }
     }
     
-//    private func impartVelocity(_ velocity:CGPoint, withMagnitude magnitude:CGFloat, onView item:UIDynamicItem) {
-//        if magnitude > limitingFriction {
-//            let pushBehaviour = UIPushBehavior(items: [item], mode: .instantaneous)
-//            pushBehaviour.pushDirection = CGVector(dx: velocity.x / 10, dy: velocity.y / 10)
-//            pushBehaviour.magnitude = 100 /// velocityPadding
-//            self.pushBehavior = pushBehaviour
-//
-//            animator.addBehavior(pushBehaviour)
-//
-//            let angle = Int(arc4random_uniform(20)) - 10
-//            itemBehavior = UIDynamicItemBehavior(items: [item])
-//            itemBehavior!.friction = 0.2
-//            itemBehavior!.allowsRotation = true
-//            itemBehavior!.addAngularVelocity(CGFloat(angle), for: item)
-//            //animator.addBehavior(itemBehavior!)
-//        }
-//    }
 }
 

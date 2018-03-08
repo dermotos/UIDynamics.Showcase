@@ -78,12 +78,16 @@ class BounceSwitch : UIView, BounceSwitchInterface {
         addGestureRecognizer(tapRecognizer)
         backgroundColor = .clear
         backgroundView.frame = bounds
-        backgroundView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        backgroundView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         backgroundView.layer.cornerRadius = bounds.size.height / 2
+        backgroundView.layer.borderWidth = 1.0
+        backgroundView.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1).cgColor
         addSubview(backgroundView)
         
         sliderView.frame = CGRect(x: 0, y: 0, width: bounds.size.height, height: bounds.size.height)
-        sliderView.backgroundColor = #colorLiteral(red: 0.05882352963, green: 0.180392161, blue: 0.2470588237, alpha: 1)
+        sliderView.backgroundColor = #colorLiteral(red: 0.5255542397, green: 0.9854720235, blue: 0.01467773691, alpha: 1)
+        sliderView.layer.borderWidth = 0.5
+        sliderView.layer.borderColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1).cgColor
         sliderView.layer.cornerRadius = bounds.size.height / 2
         backgroundView.addSubview(sliderView)
         

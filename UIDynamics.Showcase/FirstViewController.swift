@@ -13,7 +13,6 @@ class FirstViewController: UIViewController {
     var animator :UIDynamicAnimator!
     
     let gravitationalConstant = 0.4
-    let elasticConstant :CGFloat = 0.7
     
     @IBOutlet weak var controlContainer: UIVisualEffectView!
     
@@ -61,22 +60,24 @@ class FirstViewController: UIViewController {
         animator.addBehavior(anchor)
         
         
+            
         // 1 - Gravity
         gravity = UIGravityBehavior()
         gravity!.gravityDirection = CGVector(dx: 0, dy: gravitationalConstant)
         animator.addBehavior(gravity!)
         
+        
         // 2 - Collisions
-        collision = UICollisionBehavior()
-        collision!.translatesReferenceBoundsIntoBoundary = true
-        animator.addBehavior(collision!)
+//        collision = UICollisionBehavior()
+//        collision!.translatesReferenceBoundsIntoBoundary = true
+//        animator.addBehavior(collision!)
         
-        
+
         // 3. Box properties
-        boxProperties = UIDynamicItemBehavior()
-        boxProperties!.elasticity = elasticConstant
-        boxProperties!.angularResistance = 1.5
-        animator.addBehavior(boxProperties!)
+//        boxProperties = UIDynamicItemBehavior()
+//        boxProperties!.elasticity = 0.5
+//        boxProperties!.angularResistance = 2.0
+//        animator.addBehavior(boxProperties!)
     }
     
     private func addView(atPosition position:CGPoint, withSize size:CGSize, andColor color:UIColor) -> UIView {
